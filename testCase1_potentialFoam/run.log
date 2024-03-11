@@ -1,0 +1,371 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _f8e05934-20230403 OPENFOAM=2212 patch=230110 version=2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : potentialFreeSurfaceFoam -parallel
+Date   : Mar 05 2024
+Time   : 12:45:09
+Host   : TUD277850
+PID    : 2837
+I/O    : uncollated
+Case   : /mnt/d/OpenFOAM_WSL/numericalShipHydro/DTCHull_newSHM_symm_potential
+nProcs : 8
+Hosts  :
+(
+    (TUD277850 8)
+)
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading field p (kinematic)
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+
+Reading g
+Creating field zeta
+
+Creating field p_gh
+
+No MRF models present
+
+No finite volume options present
+
+Starting time loop
+
+forces forces:
+    rho: rhoInf
+    Freestream density (rhoInf) set to 998.8
+    Not including porosity effects
+
+Courant Number mean: 0.00150211 max: 0.199293
+Time = 0.0005
+
+PIMPLE: iteration 1
+min/max zetap = -9.01051e-39, 1.5849e-40
+GAMG:  Solving for p_gh, Initial residual = 0.516968, Final residual = 0.0470667, No Iterations 2
+time step continuity errors : sum local = 1.88351e-07, global = -6.98205e-08, cumulative = -6.98205e-08
+min/max zetap = -0.000721052, 0.000982291
+GAMG:  Solving for p_gh, Initial residual = 0.10777, Final residual = 9.12689e-08, No Iterations 17
+time step continuity errors : sum local = 2.37716e-13, global = 1.15801e-13, cumulative = -6.98204e-08
+ExecutionTime = 3.6 s  ClockTime = 3 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-4741.38 6128.4 -4596.66)
+        Pressure : (-4741.37 6128.38 -4596.65)
+        Viscous  : (-0.0142646 0.0219526 -0.00448966)
+    Sum of moments
+        Total    : (1548.15 -14623.4 861.492)
+        Pressure : (1548.15 -14623.4 861.488)
+        Viscous  : (0.00264489 -0.0214388 0.00391836)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.212339
+Time = 0.001
+
+PIMPLE: iteration 1
+min/max zetap = -0.00150836, 0.00207671
+GAMG:  Solving for p_gh, Initial residual = 0.0394341, Final residual = 0.00342911, No Iterations 3
+time step continuity errors : sum local = 1.43579e-08, global = -4.25651e-09, cumulative = -7.40769e-08
+min/max zetap = -0.0016624, 0.00195758
+GAMG:  Solving for p_gh, Initial residual = 0.130857, Final residual = 9.32418e-08, No Iterations 17
+time step continuity errors : sum local = 6.75633e-14, global = -3.31654e-14, cumulative = -7.40769e-08
+ExecutionTime = 6.59 s  ClockTime = 6 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-53.597 121.525 1042.79)
+        Pressure : (-53.5852 121.507 1042.79)
+        Viscous  : (-0.011747 0.0183053 -0.00371951)
+    Sum of moments
+        Total    : (8.89216 -77.6026 22.9718)
+        Pressure : (8.89001 -77.585 22.969)
+        Viscous  : (0.00215282 -0.0175302 0.00284931)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.199126
+Time = 0.0015
+
+PIMPLE: iteration 1
+min/max zetap = -0.00255271, 0.00288999
+GAMG:  Solving for p_gh, Initial residual = 0.257972, Final residual = 0.0113727, No Iterations 1
+time step continuity errors : sum local = 1.20244e-09, global = 2.21982e-10, cumulative = -7.38549e-08
+min/max zetap = -0.00255912, 0.00284167
+GAMG:  Solving for p_gh, Initial residual = 0.0424577, Final residual = 4.99612e-08, No Iterations 17
+time step continuity errors : sum local = 4.01106e-15, global = 1.97497e-15, cumulative = -7.38549e-08
+ExecutionTime = 9.25 s  ClockTime = 9 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-31.7969 54.0639 1025.32)
+        Pressure : (-31.7864 54.0474 1025.32)
+        Viscous  : (-0.0105025 0.0165856 -0.00333665)
+    Sum of moments
+        Total    : (6.43748 -69.1687 15.7686)
+        Pressure : (6.43557 -69.1531 15.7662)
+        Viscous  : (0.00191105 -0.0155888 0.00239095)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.202219
+Time = 0.002
+
+PIMPLE: iteration 1
+min/max zetap = -0.00344668, 0.00372175
+GAMG:  Solving for p_gh, Initial residual = 0.141626, Final residual = 0.00490472, No Iterations 1
+time step continuity errors : sum local = 2.33361e-10, global = -1.45066e-11, cumulative = -7.38694e-08
+min/max zetap = -0.00344535, 0.00368694
+GAMG:  Solving for p_gh, Initial residual = 0.022296, Final residual = 7.42615e-08, No Iterations 14
+time step continuity errors : sum local = 3.13132e-15, global = -1.51455e-15, cumulative = -7.38694e-08
+ExecutionTime = 11.63 s  ClockTime = 11 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-21.3342 31.2461 1030.66)
+        Pressure : (-21.3246 31.2307 1030.66)
+        Viscous  : (-0.00957186 0.0153778 -0.00306003)
+    Sum of moments
+        Total    : (4.00058 -51.0752 15.0191)
+        Pressure : (3.99885 -51.0611 15.0171)
+        Viscous  : (0.00173254 -0.0141179 0.00204671)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.204169
+Time = 0.0025
+
+PIMPLE: iteration 1
+min/max zetap = -0.00432862, 0.0045295
+GAMG:  Solving for p_gh, Initial residual = 0.0829794, Final residual = 0.00238514, No Iterations 1
+time step continuity errors : sum local = 9.67073e-11, global = 1.60516e-12, cumulative = -7.38678e-08
+min/max zetap = -0.00432569, 0.00449941
+GAMG:  Solving for p_gh, Initial residual = 0.0161039, Final residual = 7.90874e-08, No Iterations 12
+time step continuity errors : sum local = 2.96292e-15, global = 1.52252e-15, cumulative = -7.38678e-08
+ExecutionTime = 13.84 s  ClockTime = 14 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-16.6136 22.4168 1032.05)
+        Pressure : (-16.6048 22.4024 1032.05)
+        Viscous  : (-0.00880536 0.0144197 -0.00284217)
+    Sum of moments
+        Total    : (2.98194 -43.1126 14.0767)
+        Pressure : (2.98035 -43.0997 14.0749)
+        Viscous  : (0.0015871 -0.0129046 0.00176066)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.205813
+Time = 0.003
+
+PIMPLE: iteration 1
+min/max zetap = -0.00520393, 0.00530984
+GAMG:  Solving for p_gh, Initial residual = 0.0572008, Final residual = 0.00152458, No Iterations 1
+time step continuity errors : sum local = 5.38864e-11, global = 2.28513e-12, cumulative = -7.38655e-08
+min/max zetap = -0.00519826, 0.00528287
+GAMG:  Solving for p_gh, Initial residual = 0.0141094, Final residual = 5.78887e-08, No Iterations 12
+time step continuity errors : sum local = 1.93032e-15, global = 9.21679e-16, cumulative = -7.38655e-08
+ExecutionTime = 16.04 s  ClockTime = 16 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-13.9515 18.0515 1032.73)
+        Pressure : (-13.9434 18.0379 1032.73)
+        Viscous  : (-0.00815394 0.0136183 -0.00266759)
+    Sum of moments
+        Total    : (2.43109 -38.6251 13.3734)
+        Pressure : (2.42963 -38.6132 13.3719)
+        Viscous  : (0.00146464 -0.0118768 0.00151869)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.206838
+Time = 0.0035
+
+PIMPLE: iteration 1
+min/max zetap = -0.00606926, 0.00606467
+GAMG:  Solving for p_gh, Initial residual = 0.0422878, Final residual = 0.0010813, No Iterations 1
+time step continuity errors : sum local = 3.44222e-11, global = 2.76084e-12, cumulative = -7.38628e-08
+min/max zetap = -0.00606116, 0.00604033
+GAMG:  Solving for p_gh, Initial residual = 0.0127877, Final residual = 5.71242e-08, No Iterations 12
+time step continuity errors : sum local = 1.73705e-15, global = 8.28673e-16, cumulative = -7.38628e-08
+ExecutionTime = 18.21 s  ClockTime = 18 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-12.2757 15.5894 1033.08)
+        Pressure : (-12.2681 15.5765 1033.08)
+        Viscous  : (-0.00758969 0.0129283 -0.00252628)
+    Sum of moments
+        Total    : (2.09426 -35.8371 12.8449)
+        Pressure : (2.0929 -35.8261 12.8436)
+        Viscous  : (0.00135943 -0.0109913 0.00131128)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.207283
+Time = 0.004
+
+PIMPLE: iteration 1
+min/max zetap = -0.00692279, 0.00679636
+GAMG:  Solving for p_gh, Initial residual = 0.033139, Final residual = 0.000814877, No Iterations 1
+time step continuity errors : sum local = 2.38378e-11, global = 2.971e-12, cumulative = -7.38598e-08
+min/max zetap = -0.00691261, 0.00677435
+GAMG:  Solving for p_gh, Initial residual = 0.0117803, Final residual = 5.30453e-08, No Iterations 12
+time step continuity errors : sum local = 1.4939e-15, global = 7.11263e-16, cumulative = -7.38598e-08
+ExecutionTime = 20.37 s  ClockTime = 20 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-11.1377 14.0733 1033.25)
+        Pressure : (-11.1306 14.0609 1033.25)
+        Viscous  : (-0.00709445 0.0123231 -0.00241115)
+    Sum of moments
+        Total    : (1.87227 -33.9765 12.423)
+        Pressure : (1.871 -33.9663 12.4219)
+        Viscous  : (0.00126774 -0.0102187 0.00113187)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.207219
+Time = 0.0045
+
+PIMPLE: iteration 1
+min/max zetap = -0.00776299, 0.00750714
+GAMG:  Solving for p_gh, Initial residual = 0.0270111, Final residual = 0.000644708, No Iterations 1
+time step continuity errors : sum local = 1.75741e-11, global = 3.0073e-12, cumulative = -7.38568e-08
+min/max zetap = -0.00775101, 0.0074872
+GAMG:  Solving for p_gh, Initial residual = 0.0109584, Final residual = 9.99304e-08, No Iterations 11
+time step continuity errors : sum local = 2.63655e-15, global = 1.24809e-15, cumulative = -7.38568e-08
+ExecutionTime = 22.42 s  ClockTime = 22 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-10.3225 13.0658 1033.31)
+        Pressure : (-10.3158 13.054 1033.31)
+        Viscous  : (-0.00665556 0.0117854 -0.00231712)
+    Sum of moments
+        Total    : (1.71728 -32.6761 12.0858)
+        Pressure : (1.71609 -32.6666 12.0848)
+        Viscous  : (0.00118697 -0.00953833 0.000975384)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.206713
+Time = 0.005
+
+PIMPLE: iteration 1
+min/max zetap = -0.00858848, 0.00819894
+GAMG:  Solving for p_gh, Initial residual = 0.02276, Final residual = 0.000526996, No Iterations 1
+time step continuity errors : sum local = 1.35218e-11, global = 2.959e-12, cumulative = -7.38538e-08
+min/max zetap = -0.00857496, 0.00818085
+GAMG:  Solving for p_gh, Initial residual = 0.0102507, Final residual = 8.99809e-08, No Iterations 11
+time step continuity errors : sum local = 2.2436e-15, global = 1.05989e-15, cumulative = -7.38538e-08
+ExecutionTime = 24.52 s  ClockTime = 24 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-9.71629 12.3728 1033.31)
+        Pressure : (-9.71003 12.3615 1033.31)
+        Viscous  : (-0.00626375 0.0113029 -0.00224041)
+    Sum of moments
+        Total    : (1.60557 -31.737 11.8072)
+        Pressure : (1.60445 -31.7281 11.8064)
+        Viscous  : (0.00111526 -0.00893473 0.000838078)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.205824
+Time = 0.0055
+
+PIMPLE: iteration 1
+min/max zetap = -0.00939808, 0.00888832
+GAMG:  Solving for p_gh, Initial residual = 0.0195589, Final residual = 0.000445376, No Iterations 1
+time step continuity errors : sum local = 1.08439e-11, global = 2.87719e-12, cumulative = -7.3851e-08
+min/max zetap = -0.00938326, 0.00887353
+GAMG:  Solving for p_gh, Initial residual = 0.00962461, Final residual = 8.01381e-08, No Iterations 11
+time step continuity errors : sum local = 1.902e-15, global = 8.96709e-16, cumulative = -7.3851e-08
+ExecutionTime = 26.56 s  ClockTime = 26 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-9.25306 11.8797 1033.27)
+        Pressure : (-9.24715 11.8688 1033.27)
+        Viscous  : (-0.00591188 0.0108667 -0.00217798)
+    Sum of moments
+        Total    : (1.52257 -31.0411 11.5708)
+        Pressure : (1.52152 -31.0327 11.57)
+        Viscous  : (0.00105116 -0.008396 0.000717131)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.204603
+Time = 0.006
+
+PIMPLE: iteration 1
+min/max zetap = -0.0101908, 0.00957384
+GAMG:  Solving for p_gh, Initial residual = 0.0171526, Final residual = 0.000387724, No Iterations 1
+time step continuity errors : sum local = 9.01586e-12, global = 2.81334e-12, cumulative = -7.38481e-08
+min/max zetap = -0.0101749, 0.0095602
+GAMG:  Solving for p_gh, Initial residual = 0.00906633, Final residual = 7.24624e-08, No Iterations 11
+time step continuity errors : sum local = 1.64633e-15, global = 7.75804e-16, cumulative = -7.38481e-08
+ExecutionTime = 28.57 s  ClockTime = 28 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-8.89267 11.5253 1033.2)
+        Pressure : (-8.88708 11.5149 1033.2)
+        Viscous  : (-0.00559438 0.0104697 -0.00212739)
+    Sum of moments
+        Total    : (1.46016 -30.5194 11.3692)
+        Pressure : (1.45917 -30.5115 11.3686)
+        Viscous  : (0.000993576 -0.00791274 0.000610255)
+    writing force and moment files.
+
+Courant Number mean: 0.00150418 max: 0.203096
+Time = 0.0065
+
+PIMPLE: iteration 1
+min/max zetap = -0.0109658, 0.0102462
+GAMG:  Solving for p_gh, Initial residual = 0.0152201, Final residual = 0.000349437, No Iterations 1
+time step continuity errors : sum local = 7.79943e-12, global = 2.79176e-12, cumulative = -7.38453e-08
+min/max zetap = -0.010949, 0.0102336
+GAMG:  Solving for p_gh, Initial residual = 0.00856707, Final residual = 6.6253e-08, No Iterations 11
+time step continuity errors : sum local = 1.44743e-15, global = 6.82696e-16, cumulative = -7.38453e-08
+ExecutionTime = 30.61 s  ClockTime = 30 s
+
+forces forces write:
+    Sum of forces
+        Total    : (-8.60937 11.269 1033.11)
+        Pressure : (-8.60406 11.2589 1033.11)
+        Viscous  : (-0.00530679 0.0101064 -0.00208678)
+    Sum of moments
+        Total    : (1.41293 -30.1275 11.1936)
+        Pressure : (1.41199 -30.12 11.1931)
+        Viscous  : (0.000941622 -0.00747755 0.00051565)
+    writing force and moment files.
+
+Courant Number mean: 0.00150419 max: 0.201342
+Time = 0.007
+
+PIMPLE: iteration 1
+min/max zetap = -0.0117224, 0.0109063
+GAMG:  Solving for p_gh, Initial residual = 0.0137236, Final residual = 0.00032012, No Iterations 1
+time step continuity errors : sum local = 6.88529e-12, global = 2.73988e-12, cumulative = -7.38426e-08
+min/max zetap = -0.0117048, 0.0108947
