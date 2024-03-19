@@ -1,0 +1,34 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+touch case.foam
+
+python3 calcMeshParameters.py
+python3 createRefineRegions.py
+
+runApplication surfaceFeatureExtract
+
+runApplication blockMesh
+
+runApplication snappyHexMesh -overwrite 
+
+restore0Dir
+
+runApplication potentialFoam
+
+
+
+# runApplication decomposePar
+runParallel -s decompose redistributePar -decompose
+
+runParallel renumberMesh -overwrite
+
+runParallel $(getApplication)
+
+# runApplication reconstructPar
+runParallel -s reconstruct redistributePar -reconstruct
+
+
+#------------------------------------------------------------------------------

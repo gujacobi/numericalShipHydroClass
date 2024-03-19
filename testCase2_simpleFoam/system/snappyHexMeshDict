@@ -1,0 +1,234 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+	version    2.0;
+	format     ascii;
+	class      dictionary;
+	object     snappyHexMeshDict;
+}
+
+Lpp 2.76;
+
+	castellatedMesh  true;
+	snap               true;
+	addLayers         true;
+
+geometry
+{
+	viscousWake1.obj
+	{
+		type triSurfaceMesh;
+		name viscousWake1;
+	}
+
+	viscousWake2.obj
+	{
+		type triSurfaceMesh;
+		name viscousWake2;
+	}
+
+	hull16_0deg.obj
+	{
+		type triSurfaceMesh;
+		name ship;
+
+		regions
+		{
+			bow
+			{
+				name ship_bow;
+			}
+			deck
+			{
+				name ship_deck;
+			}
+			side
+			{
+				name ship_side;
+			}
+			stern	
+			{
+				name ship_stern;
+			}
+			hull
+			{
+				name ship_hull;
+			}
+		}
+	}
+
+
+
+
+}
+
+castellatedMeshControls
+{
+	maxLocalCells 5000000;
+	maxGlobalCells 2000000000;
+	minRefinementCells 10;
+	maxLoadUnbalance 0.1;
+	nCellsBetweenLevels 3;
+	resolveFeatureAngle 45;
+	locationInMesh (-1 0.1 -0.1);
+	allowFreeStandingZoneFaces true;
+
+	features
+	(
+//		{
+//			file "hull16_0deg.eMesh";
+//			level 4;
+//		}
+	);
+
+	refinementSurfaces
+	{
+		ship
+		{
+					level (4 4);
+			regions
+			{
+				bow
+				{
+					level (6 6);
+				}
+				deck
+				{
+					level (4 4);
+				}
+				stern
+				{
+					level (7 7);
+				}
+				side
+				{
+					level (5 5);
+				}
+				hull
+				{
+					level (6 6);
+				}
+			}
+		}
+
+	}
+
+	refinementRegions
+	{
+
+		viscousWake1
+		{
+			mode inside;
+			levels ((1.0 5));
+		}
+
+		viscousWake2
+		{
+			mode inside;
+			levels ((1.0 4));
+		}
+		viscousWake2
+		{
+			mode distance;
+			levels ((0.5 4));
+		}
+
+		ship
+		{
+			mode distance;
+			levels ((0.5 4));
+		}
+	}
+
+}
+snapControls
+{
+	nSmoothPatch              3;
+	nSmoothInternal           30;
+	tolerance                 4;
+	nSolveIter                100;
+	nRelaxIter                5;
+	nFeatureSnapIter          10;
+	detectNearSurfaceSnap     true;
+	implicitFeatureSnap       false;
+	explicitFeatureSnap       true;
+	multiRegionFeatureSnap    false;
+}
+
+addLayersControls
+{
+	meshShrinker displacementMotionSolver;
+	solver       displacementLaplacian;
+	displacementLaplacianCoeffs
+	{
+		diffusivity    quadratic inverseDistance 1(wall);
+	}
+
+	layers
+	{
+		ship_bow
+		{
+			nSurfaceLayers 4;
+		}
+		ship_hull
+		{
+			nSurfaceLayers 4;
+		}
+	}
+
+	relativeSizes false;
+    	firstLayerThickness 0.003;
+//finalLayerThickness 0.7;
+	expansionRatio 1.2;
+	minThickness 0.0001;
+	nGrow 0;
+	featureAngle 130;
+	slipFeatureAngle 130;
+	layerTerminationAngle 30;
+	nRelaxIter 5;
+	nSmoothSurfaceNormals 3;
+	nSmoothNormals 3;
+	nSmoothThickness 10;
+	maxFaceThicknessRatio 0.5;
+	maxThicknessToMedialRatio 0.3;
+	minMedianAxisAngle 90;
+	nBufferCellsNoExtrude 0;
+	nLayerIter 50;
+	nRelaxedIter 20;
+	
+}
+
+
+meshQualityControls
+{
+	        maxNonOrtho            65;
+		        maxBoundarySkewness    20;
+			        maxInternalSkewness    4;
+				        maxConcave             80;
+					        minVol                 -1e+30;
+						        minTetQuality          -1e+30;
+							        minArea                -1;
+								        minTwist               0.05;
+									        minDeterminant         0.001;
+										        minFaceWeight          0.05;
+											        minVolRatio            0.01;
+												        minTriangleTwist       -1;
+													        nSmoothScale           4;
+														        errorReduction         0.75;
+															        relaxed
+																	        {
+																			                maxNonOrtho    75;
+																					        }
+}
+
+
+// #include "meshQualityDict"
+
+
+mergeTolerance 1e-06;
