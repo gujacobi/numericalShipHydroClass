@@ -1,0 +1,28 @@
+forces
+{
+    type            forces;
+    libs            ("libforces.so");
+    patches         ("ship.*");
+
+
+    // Optional entries
+
+    // Field names
+    p               p;
+    U               U;
+rhoInf 1000;
+    rho             rhoInf;
+
+    // Reference pressure [Pa]
+    pRef            0;
+
+    // Include porosity effects?
+    porosity        no;
+
+    // Store and write volume field representations of forces and moments
+    writeFields     yes;
+
+    // Centre of rotation for moment calculations
+    CofR            (1.35 0 0);
+
+}
