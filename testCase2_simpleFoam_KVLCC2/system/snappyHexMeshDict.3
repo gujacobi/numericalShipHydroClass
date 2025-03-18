@@ -89,10 +89,10 @@ addLayersControls
 
 	layers
 	{
-/*		ship_rudder
+		ship_hub
 		{
-			nSurfaceLayers 2;
-	}*/
+			nSurfaceLayers #eval "$nLayers -2";
+	}
 		ship_hull
 		{
 			nSurfaceLayers #eval "$nLayers -1";
