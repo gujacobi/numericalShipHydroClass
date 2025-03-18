@@ -1,0 +1,183 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+	version    2.0;
+	format     ascii;
+	class      dictionary;
+	object     snappyHexMeshDict;
+}
+
+
+	castellatedMesh true;
+	snap            true;
+	addLayers        false;
+
+geometry
+{
+
+	ship.obj
+	{
+		type triSurfaceMesh;
+		name ship;
+
+		regions
+		{
+			Hull
+			{
+				name ship_hull;
+			}
+			Hub
+			{
+				name ship_hub;
+			}
+		}
+	}
+
+refinementBox
+{
+type searchableBox;
+min ( -0.7 -0.25 -0.34);
+max ( 0.1 0.25 0);
+}
+
+
+
+}
+
+castellatedMeshControls
+{
+	maxLocalCells 5000000;
+	maxGlobalCells 2000000000;
+	minRefinementCells 1;
+	maxLoadUnbalance 0.1;
+	nCellsBetweenLevels 4;
+	resolveFeatureAngle 60;
+	locationInMesh (3 -0.11 -0.11);
+	allowFreeStandingZoneFaces true;
+
+	features
+	(
+		{
+			file "ship.eMesh";
+			level 4;
+		}
+	);
+
+	refinementSurfaces
+	{
+		ship
+		{
+					level (5 5);
+			regions
+			{
+				Hull
+				{
+					level (7 7);
+				}
+				Hub
+				{
+					level (8 8);
+				}
+			}
+		}
+
+	}
+
+	refinementRegions
+	{
+
+/*		refinementBox
+		{
+			mode inside;
+			levels ((1 8));
+		}*/
+
+		ship
+		{
+			mode distance;
+			levels ((0.1 7));
+		}
+	}
+
+}
+snapControls
+{
+	nSmoothPatch             10;
+	nSmoothInternal           30;
+	tolerance                 2.0;
+	nSolveIter                50;
+	nRelaxIter                10;
+	nFeatureSnapIter          10;
+	detectNearSurfaceSnap     true;
+	implicitFeatureSnap       false;
+	explicitFeatureSnap       true;
+	multiRegionFeatureSnap    false;
+}
+
+addLayersControls
+{
+	meshShrinker displacementMotionSolver;
+	solver       displacementLaplacian;
+	displacementLaplacianCoeffs
+	{
+		diffusivity    quadratic inverseDistance 1(wall);
+	}
+
+	layers
+	{
+		ship_hull
+		{
+			nSurfaceLayers 4;
+//			firstLayerThickness 0.00319;
+//			finalLayerThickness 0.5;
+	}
+	}
+
+	relativeSizes false;
+//	thicknessModel firstAndRelativeFinal;
+	firstLayerThickness 0.00319;
+//	finalLayerThickness 0.8;
+	expansionRatio 1.2;
+	minThickness 0.0001;
+	nGrow 0;
+	featureAngle 180;
+	slipFeatureAngle 180;
+	layerTerminationAngle 90;
+	nRelaxIter 5;
+	nSmoothSurfaceNormals 1;
+	nSmoothNormals 3;
+	nSmoothThickness 10;
+	maxFaceThicknessRatio 0.5;
+	maxThicknessToMedialRatio 0.3;
+	minMedianAxisAngle 90;
+	nBufferCellsNoExtrude 1;
+	nLayerIter 50;
+	nOuter 5;
+	nRelaxedIter 20;
+	
+}
+
+meshQualityControls
+{
+
+#include "meshQualityDict.1"
+}
+
+writeFlags
+(
+//    scalarLevels
+//    layerSets
+//    layerFields
+);
+debugFlags
+(
+//layerInfo
+);
+
+mergeTolerance 1e-06;

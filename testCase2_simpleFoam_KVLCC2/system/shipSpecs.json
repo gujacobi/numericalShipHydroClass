@@ -1,0 +1,16 @@
+{
+    "Lpp": 5.6121,
+    "v": 1.179,
+    "dom": [
+        -3,
+        2.5,
+        -2,
+        2,
+        -1.5,
+        0
+    ],
+    "maxRefLevel": 7,
+    "minCellSize": 362,
+    "yPlusTarget": 60,
+    "growthRatio": 1.3
+}
