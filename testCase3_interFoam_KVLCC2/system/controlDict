@@ -1,0 +1,90 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     interFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         10000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   5;
+
+purgeWrite      1;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+maxAlphaCo 5;
+adjustTimeStep false;
+
+functions
+{
+/*setTimeStep1
+{
+	    type        setTimeStep;
+	        libs        (utilityFunctionObjects);
+		    deltaT      table ((0 0.001)(0.1 0.0025)(0.5 0.005));
+
+}
+  
+   fileUpdate1
+      {
+	           type              timeActivatedFileUpdate;
+		        libs              ("libutilityFunctionObjects.so");
+			     writeControl      timeStep;
+			          writeInterval     1;
+				       fileToUpdate      "$FOAM_CASE/system/fvSchemes";
+				            timeVsFile
+						         (
+							           // start with first order
+								            (-1 "$FOAM_CASE/system/fvSchemes_1")
+						                  // after 1 iterations use second order
+						                           (2.7 "$FOAM_CASE/system/fvSchemes_2")  
+								                                   );
+	                     }
+*/
+
+	forces
+    {
+        type            forces;
+        libs            (forces);
+        patches         ("ship.*");
+        rhoInf          998.8;
+        log             on;
+        writeControl    timeStep;
+        writeInterval   1;
+        CofR            (2.929541 0 0.2);
+    }
+}
+
+
+// ************************************************************************* //

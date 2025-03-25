@@ -1,0 +1,299 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+	version    2.0;
+	format     ascii;
+	class      dictionary;
+	object     snappyHexMeshDict;
+}
+
+
+	castellatedMesh true;
+	snap            true;
+	addLayers        false;
+
+geometry
+{
+
+
+
+	ship.obj
+	{
+		type triSurfaceMesh;
+		name ship;
+
+		regions
+		{
+			Hull
+			{
+				name ship_hull;
+			}
+			Deck
+			{
+				name ship_deck;
+			}
+			Hub
+			{
+				name ship_hub;
+			}
+		}
+	}
+
+kelvinWake2.obj
+{
+type triSurfaceMesh;
+name kelvinWake2;
+}
+
+
+                freeSurfaceBox1
+                {
+                        type searchableBox;
+                        name freeSurfaceBox1;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+                freeSurfaceBox2
+                {
+                        type searchableBox;
+                        name freeSurfaceBox2;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+                freeSurfaceBox3
+                {
+                        type searchableBox;
+                        name freeSurfaceBox3;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+                freeSurfaceBox4
+                {
+                        type searchableBox;
+                        name freeSurfaceBox4;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+                freeSurfaceBox5
+                {
+                        type searchableBox;
+                        name freeSurfaceBox5;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+                freeSurfaceBox6
+                {
+                        type searchableBox;
+                        name freeSurfaceBox6;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+                freeSurfaceBox7
+                {
+                        type searchableBox;
+                        name freeSurfaceBox7;
+                        min (-999.000000 -999.000000 #eval "-5.6/1000*10");
+                        max (999.000000 999.000000 #eval "5.6/1000*10");
+                }
+
+ 		kelvinWake1
+                {
+                        mode inside;
+                        levels ((1.0 4));
+                }
+
+                kelvinWake2
+                {
+                        mode inside;
+                        levels ((1.0 3));
+                }
+                kelvinWake3
+                {
+                        mode inside;
+                        levels ((1.0 2));
+                }
+                kelvinWake4
+                {
+                        mode inside;
+                        levels ((1.0 1));
+                }
+
+}
+
+castellatedMeshControls
+{
+	maxLocalCells 5000000;
+	maxGlobalCells 2000000000;
+	minRefinementCells 10;
+	maxLoadUnbalance 0.1;
+	nCellsBetweenLevels 4;
+	resolveFeatureAngle 60;
+	locationInMesh (3 -0.11 -0.11);
+	allowFreeStandingZoneFaces true;
+
+	features
+	(
+		{
+			file "ship.eMesh";
+			level 4;
+		}
+	);
+
+	refinementSurfaces
+	{
+		ship
+		{
+					level (5 5);
+			regions
+			{
+				Hull
+				{
+					level (7 7);
+				}
+				Deck
+				{
+					level (5 6);
+				}
+				Hub
+				{
+					level (8 8);
+				}
+			}
+		}
+
+	}
+
+	refinementRegions
+	{
+
+/*		refinementBox
+		{
+			mode inside;
+			levels ((1 8));
+		}*/
+
+                                freeSurfaceBox1
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (6 6 (0 0 1));
+                 }
+                                freeSurfaceBox2
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (5 5 (0 0 2));
+                 }
+                                freeSurfaceBox3
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (4 4 (0 0 3));
+                 }
+                                freeSurfaceBox4
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (3 3 (0 0 4));
+                 }
+                                freeSurfaceBox5
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (2 2 (0 0 5));
+                 }
+                                freeSurfaceBox6
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (1 1 (0 0 6));
+                 }
+                                freeSurfaceBox7
+                                {
+                                        mode inside;
+                                        levels ((1.000000 0));                                                                                                  levelIncrement (0 0 (0 0 7));
+                 }
+
+		Hull
+		{
+			mode distance;
+			levels ((0.1 7));
+		}
+	}
+
+}
+snapControls
+{
+	nSmoothPatch             5;
+	nSmoothInternal           30;
+	tolerance                 2.0;
+	nSolveIter                50;
+	nRelaxIter                5;
+	nFeatureSnapIter          10;
+	detectNearSurfaceSnap     true;
+	implicitFeatureSnap       false;
+	explicitFeatureSnap       true;
+	multiRegionFeatureSnap    false;
+}
+
+addLayersControls
+{
+	meshShrinker displacementMotionSolver;
+	solver       displacementLaplacian;
+	displacementLaplacianCoeffs
+	{
+		diffusivity    quadratic inverseDistance 1(wall);
+	}
+
+	layers
+	{
+		ship_hull
+		{
+			nSurfaceLayers 4;
+//			firstLayerThickness 0.00319;
+//			finalLayerThickness 0.5;
+	}
+	}
+
+	relativeSizes false;
+//	thicknessModel firstAndRelativeFinal;
+	firstLayerThickness 0.00319;
+//	finalLayerThickness 0.8;
+	expansionRatio 1.2;
+	minThickness 0.0001;
+	nGrow 0;
+	featureAngle 180;
+	slipFeatureAngle 180;
+	layerTerminationAngle 90;
+	nRelaxIter 5;
+	nSmoothSurfaceNormals 1;
+	nSmoothNormals 3;
+	nSmoothThickness 10;
+	maxFaceThicknessRatio 0.5;
+	maxThicknessToMedialRatio 0.3;
+	minMedianAxisAngle 90;
+	nBufferCellsNoExtrude 1;
+	nLayerIter 50;
+	nOuter 5;
+	nRelaxedIter 20;
+	
+}
+
+meshQualityControls
+{
+
+#include "meshQualityDict.1"
+}
+
+writeFlags
+(
+//    scalarLevels
+//    layerSets
+//    layerFields
+);
+debugFlags
+(
+//layerInfo
+);
+
+mergeTolerance 1e-06;

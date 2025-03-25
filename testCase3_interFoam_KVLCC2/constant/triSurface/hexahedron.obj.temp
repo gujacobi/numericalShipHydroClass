@@ -1,0 +1,17 @@
+# Exported from polymesh
+o object
+v $xmin $yamax $zmax
+v $xmin $yamin $zmax
+v $xmax $yfmin $zmax
+v $xmax $yfmax $zmax
+v $xmin $yamax $zmin
+v $xmin $yamin $zmin
+v $xmax $yfmin $zmin
+v $xmax $yfmax $zmin
+
+f 1 2 3 4 
+f 1 5 6 2 
+f 2 6 7 3 
+f 7 8 4 3 
+f 4 8 5 1 
+f 5 8 7 6 
