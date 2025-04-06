@@ -8,6 +8,8 @@ cp 0.orig/* 0
 
 setFields
 
+
+rm -rf processor*
 decomposePar
 
 

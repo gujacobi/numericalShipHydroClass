@@ -8,6 +8,8 @@ cp 0.orig/* 0
 
 potentialFoam
 
+
+rm -rf processor*
 decomposePar
 
 
