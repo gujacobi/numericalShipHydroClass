@@ -17,9 +17,9 @@ blockMesh
 
 decomposePar
 
-mpirun -np 8 snappyHexMesh -dict system/snappyHexMeshDict.1 -parallel
-mpirun -np 8 snappyHexMesh -dict system/snappyHexMeshDict.2 -parallel
-mpirun -np 8 snappyHexMesh -dict system/snappyHexMeshDict.3 -parallel
+mpirun -np 4 snappyHexMesh -dict system/snappyHexMeshDict.1 -parallel
+mpirun -np 4 snappyHexMesh -dict system/snappyHexMeshDict.2 -parallel
+mpirun -np 4 snappyHexMesh -dict system/snappyHexMeshDict.3 -parallel
 
 
 reconstructParMesh
