@@ -23,7 +23,7 @@ mpirun -np 4 snappyHexMesh -dict system/snappyHexMeshDict.3 -parallel
 
 
 reconstructParMesh
-reconstructPar -latestTime
+
 
 
 

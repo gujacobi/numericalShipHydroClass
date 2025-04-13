@@ -14,11 +14,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-Umean 1.09;
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform ($Umean 0 0);
+internalField   uniform (-1.047 0 0);
 
 boundaryField
 {
@@ -34,7 +33,7 @@ boundaryField
     {
         type            outletPhaseMeanVelocity;
         alpha           alpha.water;
-        Umean           $Umean;
+        Umean           1.047;
         value           $internalField;
     }
 
@@ -46,7 +45,7 @@ boundaryField
 
     "ship.*"
     {
-        type            movingWallVelocity;
+        type            fixedValue;
         value           uniform (0 0 0);
     }
 }

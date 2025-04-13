@@ -11,4 +11,4 @@ module load openmpi
 module load openfoam
 
 
-srun --cpu-bind=none simpleFoam  -parallel >run.log
+srun --cpu-bind=none interFoam  -parallel >run.log
